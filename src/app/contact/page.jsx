@@ -31,9 +31,13 @@ const Contact = () => {
     <div className="wrapper">
       <div className="content">
         {isLogin ? (
-          <button className="button" onClick={handleLogout}>
-            logout
-          </button>
+          <>
+            <h2>{username}さん</h2>
+            <h1>ログイン中</h1>
+            <button className="button" onClick={handleLogout}>
+              logout
+            </button>
+          </>
         ) : (
           <>
             <div className="input">
