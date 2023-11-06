@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 90vh;
+}
+
+.content {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.input {
+  margin: 10px auto;
+}
+
+.username,
+.password {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 2.5px 5px;
+}
+
+.button {
+  font-weight: bold;
+  padding: 5px;
+}
