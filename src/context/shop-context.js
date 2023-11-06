@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // グローバルなpropsを定義し、初期値を渡す
 export const ShopContext = createContext(null);
@@ -15,6 +15,15 @@ const getDefaultCart = () => {
 }
 
 export const ShopContextProvider = (props) => {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setItems(json);
+      });
+  }, [])
+
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   const getTotalCartAmount = () => {
@@ -45,6 +54,7 @@ export const ShopContextProvider = (props) => {
   };
 
   const contextValue = {
+    items,
     cartItems,
     getTotalCartAmount,
     addToCart,
