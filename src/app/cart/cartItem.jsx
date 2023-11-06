@@ -11,9 +11,7 @@ function CartItem(props) {
     <div className="cartItem">
       <img src={image} />
       <div className="description">
-        <p>
-          <b>{title}</b>
-        </p>
+        <p className="cartItemTitle">{title}</p>
         <p>$ {price}</p>
         <div className="countHandler">
           <button onClick={() => removeFromCart(id)}> - </button>
@@ -23,6 +21,7 @@ function CartItem(props) {
           />
           <button onClick={() => addToCart(id)}> + </button>
         </div>
+        <p className="subtotal">小計: ${price * cartItems[id]}</p>
       </div>
     </div>
   );
