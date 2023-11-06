@@ -1,15 +1,24 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 import "./cart.css";
 import CartItem from "./cartItem";
+import { ShopContext } from "@/context/shop-context";
 
 const Cart = () => {
+  const { items, cartItems } = useContext(ShopContext);
+
   return (
     <div className="cart">
       <div>
         <h1>カートの商品</h1>
       </div>
       <div className="cart">
-        <CartItem />
+        {items.map((item) => {
+          if (cartItems[item.id] !== 0) {
+            return <CartItem data={item} />;
+          }
+        })}
       </div>
 
       <div className="checkout">

@@ -1,3 +1,4 @@
+"use client";
 import { ShopContext } from "@/context/shop-context";
 import React, { useContext } from "react";
 

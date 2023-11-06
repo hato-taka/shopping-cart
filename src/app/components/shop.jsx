@@ -22,6 +22,7 @@ function Shop() {
             price={item.price}
             description={item.description}
             category={item.category}
+            key={item.id}
           />
         ))}
       </div>

@@ -1,18 +1,27 @@
-import React from "react";
+"use client";
+import { ShopContext } from "@/context/shop-context";
+import React, { useContext } from "react";
 
-function CartItem() {
+function CartItem(props) {
+  const { id, title, image, price } = props.data;
+  const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
+    useContext(ShopContext);
+
   return (
     <div className="cartItem">
-      <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
+      <img src={image} />
       <div className="description">
         <p>
-          <b>name</b>
+          <b>{title}</b>
         </p>
-        <p>price</p>
+        <p>$ {price}</p>
         <div className="countHandler">
-          <button> - </button>
-          <input value={"1"} />
-          <button> + </button>
+          <button onClick={() => removeFromCart(id)}> - </button>
+          <input
+            value={cartItems[id]}
+            onChange={(e) => updateCartItemCount(Number(e.target.value), id)}
+          />
+          <button onClick={() => addToCart(id)}> + </button>
         </div>
       </div>
     </div>
