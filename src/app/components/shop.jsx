@@ -1,19 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./shop.css";
 import Item from "./item";
+import { ShopContext } from "@/context/shop-context";
 
 function Shop() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        setItems(json);
-      });
-  }, []);
+  const { items } = useContext(ShopContext);
 
   return (
     <div className="shop">
